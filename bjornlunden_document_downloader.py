@@ -12,7 +12,7 @@ TOKEN_FILE = 'token_cache.txt'
 def fetch_api_token(base_url_auth, client_id, client_secret):
     payload = {
         'grant_type': 'client_credentials',
-#        'scope': '',
+        'scope': None,
         'client_id': client_id,
         'client_secret': client_secret
     }
