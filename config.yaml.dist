@@ -1,0 +1,5 @@
+base_url_auth: https://apigateway.blinfo.se/auth/oauth/v2
+base_url: https://apigateway.blinfo.se/bla-api/v1/sp
+client_id: Cl13nT-1d-356356-356sdth-434
+client_secret: Cl13nT-s3Cr3t-2435245-245-abae
+#user_key: us3r-k3y-24vb2-22bc32d3-cnx23 # get this by running the script without this key, or run get_connected_companies() manually
