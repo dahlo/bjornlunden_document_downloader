@@ -1,3 +1,4 @@
 *.yaml
 token_cache.txt
 *.sw*
+test/
