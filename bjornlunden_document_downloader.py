@@ -305,10 +305,18 @@ def get_cached_token():
 if __name__ == '__main__':
 
     # Parse command line arguments
-    parser = argparse.ArgumentParser(description='Fetch API token using client ID and client secret from config YAML file')
+    parser = argparse.ArgumentParser(description='A python script to download and organize documents from Bjorn Lundén API.')
     parser.add_argument('-c', '--config', help='Path to the config YAML file', required=True)
     parser.add_argument('-o', '--output-dir', help='Path to the output directory', required=True)
+    parser.add_argument('-s', '--startdate', help='Start date for journal entries. Default is {year-1}-01-01.', required=False)
+    parser.add_argument('-e', '--enddate', help='End date for journal entries. Default is {year-1}-12-31.', required=False)
     args = parser.parse_args()
+
+    # set default start and end date
+    if not args.startdate:
+        args.startdate = f'{time.localtime().tm_year - 1}-01-01'
+    if not args.enddate:
+        args.enddate = f'{time.localtime().tm_year - 1}-12-31'
 
     # Read the config file
     with open(args.config, 'r') as file:
