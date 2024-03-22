@@ -1,6 +1,7 @@
 # bjornlunden_document_downloader
 
-A python script to download and organize documents from Bjorn Lundén API.
+A python script to download and organize documents from Bjorn Lundén API. Get API access by following the guide at https://developer.bjornlunden.se/
+
 
 ## Usage
 
