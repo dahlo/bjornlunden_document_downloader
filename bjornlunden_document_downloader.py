@@ -184,6 +184,7 @@ def get_accounts(base_url, api_token, user_key):
         'Authorization': f'Bearer {api_token}'
     }
 
+    pdb.set_trace()
     # Make the request
     response = requests.get(f'{base_url}/account', headers=headers)
 
@@ -302,6 +303,32 @@ def get_cached_token():
 
     return None
 
+
+def print_user_info(base_url, api_token):
+    """
+    Prints information about the user
+    :param base_url: The base URL for the API
+    :param api_token: The API token
+    """
+
+    # Set the headers
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {api_token}'
+    }
+
+    # Make the request
+    response = requests.get(f'{base_url}/common/me', headers=headers)
+
+    # Check the response
+    if response.status_code == 200:
+        user_info = response.json()
+        pprint(user_info)
+    else:
+        print(f'Failed to get user information. Status code: {response.status_code}')
+
+
+
 if __name__ == '__main__':
 
     # Parse command line arguments
@@ -310,7 +337,9 @@ if __name__ == '__main__':
     parser.add_argument('-o', '--output-dir', help='Path to the output directory', required=True)
     parser.add_argument('-s', '--startdate', help='Start date for journal entries. Default is {year-1}-01-01.', required=False)
     parser.add_argument('-e', '--enddate', help='End date for journal entries. Default is {year-1}-12-31.', required=False)
+    parser.add_argument('-m', '--me', help='Print out information about your own API user and exits.', action='store_true')
     args = parser.parse_args()
+
 
     # set default start and end date
     if not args.startdate:
@@ -353,6 +382,12 @@ if __name__ == '__main__':
             cached_token = fetch_api_token(base_url_auth, client_id, client_secret)
 
         if cached_token:
+
+            # check if the user wants to print their own information
+            if args.me:
+                print('Printing user information...')
+                print_user_info(base_url, cached_token)
+                exit(0)
 
             # Get company details
             #pprint(get_connected_companies(base_url, cached_token))

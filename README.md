@@ -6,7 +6,7 @@ A python script to download and organize documents from Bjorn Lundén API. Get A
 ## Usage
 
 ```bash
-python3 bjornlunden_document_downloader.py [-h] -c CONFIG -o OUTPUT_DIR [-s STARTDATE] [-e ENDDATE]
+python3 bjornlunden_document_downloader.py [-h] -c CONFIG -o OUTPUT_DIR [-s STARTDATE] [-e ENDDATE] [-m]
 
 options:
   -h, --help            show this help message and exit
@@ -18,6 +18,8 @@ options:
                         Start date for journal entries. Default is {year-1}-01-01.
   -e ENDDATE, --enddate ENDDATE
                         End date for journal entries. Default is {year-1}-12-31.
+  -m, --me              Print out information about your own API user and exits.
+
 ```
 
 It will use the credentials stored in the `CONFIG` file and save all documents in `OUTPUT_DIR`, organized by account. Each document will be named
