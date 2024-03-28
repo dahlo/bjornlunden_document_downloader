@@ -184,7 +184,6 @@ def get_accounts(base_url, api_token, user_key):
         'Authorization': f'Bearer {api_token}'
     }
 
-    pdb.set_trace()
     # Make the request
     response = requests.get(f'{base_url}/account', headers=headers)
 
